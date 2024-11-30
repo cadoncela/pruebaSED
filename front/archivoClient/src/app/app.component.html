@@ -1,0 +1,36 @@
+<div class="container w-50 mx-auto pt-5" >
+  <div class="mb-5">
+    <label for="txt" class="form-label">Archivo TXT</label>
+    <input type="file" id="txt" class="form-control" (change)="uploadFile($event)">
+  </div>
+
+  <div *ngIf="visible">
+    <table class="table" *ngIf="(timeResponse != undefined && timeResponse.length > 0) else isEmpty">
+      <thead>
+        <tr>
+          <th>hora</th>
+          <th>minutos</th>
+          <th>resultado</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let time of timeResponse; index as i">
+          <td> {{time.hora}} </td>
+          <td> {{time.minutos}} </td>
+          <td> {{time.resultado}} </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #isEmpty>
+      <div>
+        No existen registros en el sistema!!
+      </div>
+    </ng-template>
+  </div>
+
+
+
+
+</div>
